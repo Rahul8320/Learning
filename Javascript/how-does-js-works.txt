@@ -1,0 +1,12 @@
+========= Javascript Execution Context ============ 
+
+I) Global Execution Context -> {this} 
+|| In Browser -> this -> Broser Window Object 
+|| In Node Workspace -> this -> {}
+
+II) Functional Execution Context
+
+III) Eval Execution Context -> used in MongoDb
+
+[{}] -> Memory Creation Phase or Creation Phase
+     -> Execution Phase 
