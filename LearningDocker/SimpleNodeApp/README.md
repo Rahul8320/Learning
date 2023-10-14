@@ -57,3 +57,42 @@ GET http://localhost:3000/jokes
   { "id": 5, "title": "A fifth joke", "content": "This is fifth joke content" }
 ]
 ```
+
+## Docker Clean Up
+
+### Remove Unused Containers
+
+```
+docker container prune
+```
+
+### Remove Unused Images
+
+```
+docker image prune
+```
+
+### Remove All Unused Resources
+
+```
+docker system prune
+```
+
+### Remove Volumes
+
+```
+docker volume prune
+```
+
+### Remove Networks
+
+```
+docker network prune
+```
+
+### See Disk Usage Information
+
+```
+docker system df
+```
+

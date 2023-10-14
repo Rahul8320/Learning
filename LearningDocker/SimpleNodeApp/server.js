@@ -20,6 +20,10 @@ app.get("/", (req, res) => {
   res.send("Server is ready to serve!");
 });
 
+app.get("/docker", (req,res) => {
+  res.send("Ok! I am running from docker");
+});
+
 // add get jokes routes
 app.get("/jokes", (req, res) => {
   res.send(jokes);
