@@ -2,18 +2,22 @@
 
 ## Build
 
-Build this simple node backend application
+Build this backend application dor development
 
 ```
-docker build . -t node_app
+docker build --target development -t myapp:dev .
+```
+
+```
+docker build --target production -t myapp:dev .
 ```
 
 ## Run
 
-Run the application in docker
+Run the application in docker for development with volume add for hot reload on file changes
 
 ```
-docker run -p 3000:3000 node_app
+docker run -p 3000:3000 -v .:/usr/src/app myapp:dev
 ```
 
 ## Tests
