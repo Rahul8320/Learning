@@ -17,11 +17,11 @@ app.use((req, res, next) => {
 
 // defult get routes
 app.get("/", (req, res) => {
-  res.send("Server is ready to serve!");
+  res.send("Server is ready to serve! multistage build is done");
 });
 
 app.get("/docker", (req,res) => {
-  res.send("Let's test the dev environment.");
+  res.send("Let's test the dev environment! working well buddy!");
 });
 
 // add get jokes routes
