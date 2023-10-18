@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <%- include ("layouts/header") %>
+  <style>
+    .gradient-custom {
+      /* fallback for old browsers */
+      background: #f6d365;
+
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: -webkit-linear-gradient(
+        to right bottom,
+        rgba(246, 211, 101, 1),
+        rgba(253, 160, 133, 1)
+      );
+
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: linear-gradient(
+        to right bottom,
+        rgba(246, 211, 101, 1),
+        rgba(253, 160, 133, 1)
+      );
+    }
+  </style>
+  <body>
+    <%- include ("layouts/navbar") %>
+
+    <div class="container mx-auto">
+      <% if (message) { %>
+              <div class=" my-2 alert alert-<%= message.type %> alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                <strong>
+                  <%= message.message %>
+                </strong>
+              </div>
+              <% } %>
+      <div class="p-5">
+        <section style="background-color: #f4f5f7">
+          <div class="container py-5 h-100">
+            <div
+              class="row d-flex justify-content-center align-items-center h-100"
+            >
+              <div class="col col-lg-6 mb-4 mb-lg-0">
+                <div class="card mb-3" style="border-radius: 0.5rem">
+                  <div class="row g-0">
+                    <div
+                      class="col-md-4 gradient-custom text-center text-white"
+                      style="
+                        border-top-left-radius: 0.5rem;
+                        border-bottom-left-radius: 0.5rem;
+                      "
+                    >
+                      <% if (user.profile_pic) { %>
+                      <img
+                        src="/uploads/<%= user.profile_pic %>"
+                        alt="<%= user.name %> "
+                        class="img-fluid my-5 rounded-3"
+                        style="width: 120px"
+                      />
+                      <% }else{ %>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                        alt="Avatar"
+                        class="img-fluid my-5"
+                        style="width: 80px"
+                      />
+                      <% } %> 
+                      <h5><%= user.name %></h5>
+                      <p>Web Designer</p>
+
+                      <!-- Button trigger modal -->
+                      <button
+                        type="button"
+                        class="btn btn-link btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                      >
+                        <i class="fa fa-edit fa-2x mb-5"></i>
+                      </button>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body p-4">
+                        <h6>Information</h6>
+                        <hr class="mt-0 mb-4" />
+                        <div class="row pt-1">
+                          <div class="col-6 mb-3">
+                            <h6>Email</h6>
+                            <p class="text-muted"><%= user.email %></p>
+                          </div>
+                          <div class="col-6 mb-3">
+                            <h6>User Id</h6>
+                            <p class="text-muted">
+                              <%= user._id.toString().substring(0,12) %>..
+                            </p>
+                          </div>
+                        </div>
+                        <h6>Details</h6>
+                        <hr class="mt-0 mb-4" />
+                        <div class="row pt-1">
+                          <div class="col-6 mb-3">
+                            <h6>Join on</h6>
+                            <p class="text-muted">
+                              <%= user.created_at.toString().substring(0,15) %>
+                            </p>
+                          </div>
+                          <div class="col-6 mb-3">
+                            <h6>Last Update</h6>
+                            <p class="text-muted">
+                              <%= user.updated_at.toString().substring(0,15) %>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- modal for image upload -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Update Image</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <form action="/teacher/update" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+              <input
+              class="form-control"
+              type="file"
+              name="image"
+              id="image"
+              placeholder="Enter your image url"
+              required
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include ("layouts/footer") %>
+  </body>
+</html>

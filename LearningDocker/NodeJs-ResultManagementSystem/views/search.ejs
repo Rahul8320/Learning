@@ -1,0 +1,54 @@
+<html>
+<%- include("layouts/header") %>
+
+    <body style="background-color: rgb(221, 221, 221)">
+        <%- include("layouts/navbar") %>
+
+            <div class="container my-5 p-3 d-flex justify-content-center items-center">
+                <div class="col-md-6 bg-white p-4 shadow-lg rounded-3">
+                    <% if (message) { %>
+                        <div class="alert alert-<%= message.type %> alert-dismissible fade show" role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+                            <strong>
+                                <%= message.message %>
+                            </strong>
+                        </div>
+                        <% } %>
+                            <h2 class="mt-2">Find Result</h2>
+                            <div class="mx-5">
+                                <form action="/search/result" method="post">
+                                    <div class="row g-3 py-3 align-items-center">
+                                        <div class="col-md-2">
+                                            <label for="roll" class="col-form-label">Roll No</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="number" id="roll" class="form-control" name="roll"
+                                                placeholder="Enter Your Roll" required
+                                                onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" />
+                                        </div>
+                                    </div>
+                                    <div class="row g-3 py-3 align-items-center">
+                                        <div class="col-md-2">
+                                            <label for="name" class="col-form-label">Name</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" id="name" class="form-control" name="name"
+                                                placeholder="Enter Your Name" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 d-flex justify-content-between py-3">
+                                        <button type="submit" class="btn btn-primary btn-lg mx-5 rounded-pill">
+                                            <span class="mx-4">Search</span>
+                                        </button>
+                                        <button type="reset" class="btn btn-outline-secondary btn-lg mx-2 rounded-pill">
+                                            <span class="mx-4">Clear</span>
+                                        </button>
+                                </form>
+                            </div>
+                </div>
+            </div>
+            <%- include ("layouts/footer") %>
+    </body>
+
+</html>

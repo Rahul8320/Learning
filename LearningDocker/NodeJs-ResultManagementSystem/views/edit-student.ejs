@@ -1,0 +1,102 @@
+<html>
+  <%- include("layouts/header") %>
+  <body>
+    <%- include("layouts/navbar") %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mx-auto mt-4">
+          <div class="card shadow">
+            <div class="card-header bg-success">
+              <h3 class="text-light">Edit Student (<%= student.name %> )</h3>
+            </div>
+            <div class="card-body p-4 pb-5">
+              <form
+                action="/update/<%= student._id %>"
+                method="post"
+                id="edit-form"
+                enctype="multipart/form-data"
+              >
+                <div class="mb-3">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    value="<%= student.name %>"
+                    placeholder="Student Name"
+                    class="form-control form-control-lg"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="roll">Roll No</label>
+                  <input
+                    type="text"
+                    name="roll"
+                    id="roll"
+                    pattern="[0-9]+"
+                    value="<%= student.rollNo %>"
+                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                    placeholder="Student Roll No"
+                    class="form-control form-control-lg"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="score">Score</label>
+                  <input
+                    type="text"
+                    name="score"
+                    id="score"
+                    pattern="[0-9]+"
+                    value="<%= student.score %>"
+                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                    placeholder="Student Score"
+                    class="form-control form-control-lg"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="dob">Date Of Birth</label>
+                  <input type="date" name="dob" id="dob" value="<%=
+                  moment(student.dateOfBirth).format("YYYY-MM-DD")%>"
+                  class="form-control form-control-lg" required />
+                </div>
+                <div class="mb-3">
+                  <label for="image">Select Image (Optional)</label>
+                  <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    class="form-control form-control-lg"
+                  />
+                  <img
+                    src="/uploads/<%= student.image %>"
+                    width="100"
+                    class="img-thumbnail mt-1"
+                  />
+                </div>
+                <input
+                  type="hidden"
+                  name="old_image"
+                  id="old_image"
+                  value="<%= student.image %>"
+                />
+                <div class="mb-3 d-grid">
+                  <input
+                    type="submit"
+                    name="submit"
+                    value="Update Student"
+                    class="btn btn-success btn-lg"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include("layouts/footer") %>
+  </body>
+</html>
