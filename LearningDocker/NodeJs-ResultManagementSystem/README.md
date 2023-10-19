@@ -14,6 +14,7 @@
 ## 📝 Table of Contents
 
 - [About](#about)
+- [Preview](#preview)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
 - [Usage](#usage)
@@ -28,6 +29,13 @@ In this application teachers, after login, can add new student details with scor
 Student can view their result with profile details by searching with their Roll no and Name.
 
 <strong> Authentication and Authorization is done by JWT Token.</strong>
+
+## 🍵 Preview <a name = "preview"></a>
+
+![Login Page](./preview/Login-Screen.png)
+![Register Page](./preview/Signup-screen.png)
+![Home Page](./preview/Home-page.png)
+![Student Search Result Page](./preview/Student-search-result-page.png)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
