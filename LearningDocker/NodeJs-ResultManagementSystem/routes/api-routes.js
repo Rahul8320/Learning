@@ -48,13 +48,18 @@ router.get("/add", jwtauth, (req, res) => {
 
 // insert a student into database
 router.post("/add", jwtauth, upload, (req, res) => {
+  const { name, roll, score, dob } = req.body;
   const student = new Student({
-    name: req.body.name,
-    rollNo: req.body.roll,
-    score: req.body.score,
-    dateOfBirth: req.body.dob,
-    image: req.file.filename,
+    name: name,
+    rollNo: roll,
+    score: score,
+    dateOfBirth: dob,
   });
+
+  if (req.file) {
+    student.image = req.file.filename;
+  }
+
   student.save((err) => {
     if (err) {
       res.json({ message: err.message, type: "danger" });
