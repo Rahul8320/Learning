@@ -1,7 +1,14 @@
 Dockerfile
+Dockerfile.dev
+Dockerfile.prod
+
+docker-compose-dev.yml
+
 
 node_modules
 .env.sample
+.env
+.gitignore
 
 request_logs.txt
 
