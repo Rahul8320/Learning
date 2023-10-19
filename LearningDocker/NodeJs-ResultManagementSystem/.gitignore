@@ -6,3 +6,5 @@ node_modules/
 request_logs.txt
 
 uploads/image*
+
+.vscode

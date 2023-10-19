@@ -3,11 +3,11 @@
  <img width=200px height=200px src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fmediad.publicbroadcasting.net%2Fp%2Fwuwm%2Ffiles%2Fstyles%2Fx_large%2Fpublic%2F201510%2FFotolia_63395468_Subscription_Monthly_M.jpg&f=1&nofb=1&ipt=487acbf1aa6215dc32fa33494fbc121fe58b524e71b69bd1e5b966be2be1a5f5&ipo=images" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Result Managment System</h3>
+<h3 align="center">Result Management System</h3>
 
 ---
 
-<p align="center"> Implement a result managment system with Nodejs, Express, Mongodb
+<p align="center"> Implement a result management system with Nodejs, Express, Mongodb and docker.
     <br> 
 </p>
 
@@ -27,7 +27,7 @@ In this application teachers, after login, can add new student details with scor
 
 Student can view their result with profile details by searching with their Roll no and Name.
 
-<strong> Authentication and Atuorization is done by JWT Token.</strong>
+<strong> Authentication and Authorization is done by JWT Token.</strong>
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -39,22 +39,47 @@ What things you need to install the software and how to install them.
 
 ```
  - Node JS
- - MongoDB Atlast Database
+ - MongoDB Atlas Database
+ - Docker (If you want to run the application in docker)
 ```
 
-### Installing
+### Local Setup With Docker
 
-A step by step series of examples that tell you how to get a development env running.
+1. Create a local env file in the root directory with name .env.dev and add the following variables.
+
+```
+PORT=<Enter your default port for the app>
+DB_URI=<Enter your mongodb atlas database uri>
+TOKEN_SECRET=<Enter any secret text for your JWT Token>
+SESSION_SECRET=<Enter any secret text for your express sessions>
+```
+
+2. Run the docker compose up command (-d for detach mode)
+
+```
+docker-compose -f docker-compose-dev.yml up -d
+```
+
+3. To stop run the following command
+
+```
+docker-compose -f docker-compose-dev.yml down
+```
+
+### Local Setup Without Docker
+
+A step by step series of examples that tell you how to get a development env running in your local machine.
 
 1. Clone this repository:
 
 ```
-git clone <this repo>
+git clone https://github.com/Rahul8320/Learning/tree/main/LearningDocker/NodeJs-ResultManagementSystem
 ```
 
 2. Open the cloned folder and install the required dependencies:
 
 ```
+cd NodeJs-ResultManagementSystem
 npm install
 ```
 
@@ -62,7 +87,7 @@ npm install
 
 ```
 PORT=<Enter your default port for the app>
-DB_URI=<Enter your mongodb atlast database uri>
+DB_URI=<Enter your mongodb atlas database uri>
 TOKEN_SECRET=<Enter any secret text for your JWT Token>
 SESSION_SECRET=<Enter any secret text for your express sessions>
 ```
@@ -76,7 +101,7 @@ npm start
 ## 🎈 Usage <a name="usage"></a>
 
 Create a teacher user by going to register page and then login using the same user.
-Now you can add student by going "add student" link in the navbar. From the dashboard you can view all setudent details, search student by name , edit or delete student by going to respected links.
+Now you can add student by going "add student" link in the navbar. From the dashboard you can view all student details, search student by name , edit or delete student by going to respected links.
 
 After logout, you can go student page and search student result or details by entering roll no and name of the student.
 
