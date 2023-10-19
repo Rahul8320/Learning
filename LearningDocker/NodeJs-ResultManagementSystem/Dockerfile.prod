@@ -1,5 +1,5 @@
 # The base image
-FROM node:20-alpine AS base
+FROM node:18-alpine AS base
 # Set the working directory
 WORKDIR /usr/src/app
 # copy the package json and package-lock.json
